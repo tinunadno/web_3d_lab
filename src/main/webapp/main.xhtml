@@ -91,7 +91,7 @@
                         </thead>
                         <tbody id="tableBody">
                         <!-- Здесь можно вывести историю запросов через цикл -->
-                        <ui:repeat value="#{mainBean.history}" var="entry">
+                        <ui:repeat value="#{mainBean.resultHistory}" var="entry">
                             <tr>
                                 <td class="tableHeader"><h:outputText value="#{entry.id}"/></td>
                                 <td class="th"><h:outputText value="#{entry.xValue}"/></td>
@@ -109,7 +109,7 @@
 
             <div class="graphicSpot">
                 <div class="pointsLayout">
-                    <ui:repeat value="#{mainBean.history}" var="entry" >
+                    <ui:repeat value="#{mainBean.resultHistory}" var="entry" >
                         <div class="point #{entry.result ? 'point_pos' : 'point_neg'}"
                              style="--x: #{entry.xValue}; --y: #{entry.yValue};">
                         </div>
