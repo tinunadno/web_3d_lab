@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>gay</title>
+    <link rel="stylesheet" href="css/baseStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="./css/headerStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="./css/footerStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/userInterfaceStructureStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/selectStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/interfaceGrid.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/textFieldStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/graphicStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/graphicPlotStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/tableStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/buttonStyle.css"/> <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="css/RadioButtonStyle.css"/> <!-- Подключение CSS файла -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"> </script>
+    <script src="js/requestHandler.js" type="text/javascript"> </script>
+    <script src="js/inputHandler.js" type="text/javascript"> </script>
+    <script src="js/eventHandler.js" type="text/javascript"> </script>
+    <script src="js/imageClickHandler.js" type="text/javascript"> </script>
+    <script src="js/windowEventListener.js" type="text/javascript"> </script>
+    <script src="js/batman.js" type="text/javascript"> </script>
+</h:head>
+
+<h:body class="body">
+    <header class="header">Перминов Юра Константинович P3231 Вариант №223317</header>
+    <div class="middle">
+        <div class="userInterfacePanel">
+            <div class="left">
+                <h:form id="userInputForm">
+                    <div class="userInput">
+                        <div class="grid-container">
+                            <div class="grid-item">X:</div>
+                            <div class="grid-item">
+                                <h:selectOneMenu value="#{mainBean.xValue}" styleClass="select" id="user-input-selectBox">
+                                    <f:selectItem itemValue="-5" itemLabel="-5"/>
+                                    <f:selectItem itemValue="-4" itemLabel="-4"/>
+                                    <f:selectItem itemValue="-3" itemLabel="-3"/>
+                                    <f:selectItem itemValue="-2" itemLabel="-2"/>
+                                    <f:selectItem itemValue="-1" itemLabel="-1"/>
+                                    <f:selectItem itemValue="0" itemLabel="0"/>
+                                    <f:selectItem itemValue="1" itemLabel="1"/>
+                                    <f:selectItem itemValue="2" itemLabel="2"/>
+                                    <f:selectItem itemValue="3" itemLabel="3"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="grid-item">Y:</div>
+                            <div class="grid-item">
+                                <h:inputText value="#{mainBean.yValue}" styleClass="textField" id="user-input-textField"/>
+                            </div>
+                            <div class="grid-item">radius:</div>
+                            <div class="grid-item" id="radioButtonDiv">
+                                <h:selectOneRadio value="#{mainBean.radius}">
+                                    <f:selectItem itemValue="1" itemLabel="1"/>
+                                    <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                                    <f:selectItem itemValue="2" itemLabel="2"/>
+                                    <f:selectItem itemValue="2.5" itemLabel="2.5"/>
+                                    <f:selectItem itemValue="3" itemLabel="3"/>
+                                </h:selectOneRadio>
+                            </div>
+                            <h:commandButton value="get server response" styleClass="grid-item button"
+                                             action="#{mainBean.processRequest}" id="responseButton"/>
+                            <div class="grid-item result-text-positive" id="result">
+                                <h:outputText value="#{mainBean.result}"/>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+
+                <div class="userInputHistory">
+                    <table class="table" id="userHistoryTable">
+                        <thead id="tableHeaders">
+                        <tr>
+                            <th class="tableHeader">№</th>
+                            <th class="tableHeader">X</th>
+                            <th class="tableHeader">Y</th>
+                            <th class="tableHeader">R</th>
+                            <th class="tableHeader">request time</th>
+                            <th class="tableHeader">server start</th>
+                            <th class="tableHeader">response</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        <!-- Здесь можно вывести историю запросов через цикл -->
+                        <ui:repeat value="#{mainBean.history}" var="entry">
+                            <tr>
+                                <td><h:outputText value="#{entry.number}"/></td>
+                                <td><h:outputText value="#{entry.x}"/></td>
+                                <td><h:outputText value="#{entry.y}"/></td>
+                                <td><h:outputText value="#{entry.radius}"/></td>
+                                <td><h:outputText value="#{entry.requestTime}"/></td>
+                                <td><h:outputText value="#{entry.serverStart}"/></td>
+                                <td><h:outputText value="#{entry.response}"/></td>
+                            </tr>
+                        </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+<!--            <div class="graphicSpot">-->
+<!--                <div id="points" class="pointsLayout">-->
+<!--                    &lt;!&ndash; JSF-управляемые точки &ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="graphic">-->
+<!--                    <h:graphicImage name="figure/graphLines.png" library="images" alt="Interactive Image" id="interactive-image"/>-->
+<!--                </div>-->
+<!--                <div class="graphicPlotContainer" style="&#45;&#45;scale: 1;" id="graphicPlot">-->
+<!--                    <canvas class="canvas" id="batmanCanvas" style="transform: scale(var(&#45;&#45;scale));"  data-custom="2.5" width="500" height="400"></canvas>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+    <footer class="footer">v 2.5</footer>
+</h:body>
+</html>

@@ -1,0 +1,52 @@
+.graphicSpot .graphic {
+  position: relative; /* Establishes a positioning context */
+  width: 600px; /* Width of the container */
+  height: 600px; /* Height of the container */
+  margin: 0; /* Remove margins */
+  display: flex; /* Use Flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1;
+}
+.pointsLayout{
+  position: absolute; /* Positioning relative to the graphic */
+  width: 600px; /* Width of the second image */
+  height: 600px; /* Height of the second image */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center */
+  display: flex; /* Use Flexbox for alignment */
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 2; /* Ensure this image is below the second image */
+}
+.point {
+  position: absolute;
+  width: 8px; /* Adjust size as needed */
+  height: 8px; /* Adjust size as needed */
+  background-color: lightcoral;
+  border-radius: 50%; /* Make the point circular */
+  border: 2px solid red; /* Border style */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Positioning points based on data attributes */
+.point {
+  top: calc(var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+}
+
+.point_pos {
+  position: absolute;
+  width: 8px; /* Adjust size as needed */
+  height: 8px; /* Adjust size as needed */
+  background-color: lightgreen;
+  border-radius: 50%; /* Make the point circular */
+  border: 2px solid green; /* Border style */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Positioning points based on data attributes */
+.point_pos {
+  top: calc(var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+}

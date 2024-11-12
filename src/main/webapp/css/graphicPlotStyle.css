@@ -1,0 +1,21 @@
+.graphicPlotContainer {
+  position: absolute; /* Positioning relative to the graphic */
+  width: 500px; /* Width of the second image */
+  height: 500px; /* Height of the second image */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center */
+  display: flex; /* Use Flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 0; /* Ensure this image is below the second image */
+}
+
+.graphicPlotContainer img {
+  position: relative;
+  max-width: none; /* Prevent scaling down for the second image */
+  max-height: none; /* Prevent scaling down for the second image */
+  transform: scale(var(--scale)); /* Apply scaling based on custom property */
+  transition: transform 0.3s ease; /* Smooth scaling transition */
+  z-index: 0; /* Ensure this image is below the second image */
+}
