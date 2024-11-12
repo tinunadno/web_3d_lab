@@ -3,7 +3,7 @@ package org.web_3d_lab.web_3d_lab;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import org.web_3d_lab.web_3d_lab.stored_objects.Result;
-import org.web_3d_lab.web_3d_lab.utils.PointChecker;
+import org.web_3d_lab.web_3d_lab.Services.PointChecker;
 
 import java.io.Serializable;
 import java.util.ArrayList;

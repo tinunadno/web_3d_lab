@@ -20,12 +20,10 @@
     <link rel="stylesheet" href="css/buttonStyle.css"/> <!-- Подключение CSS файла -->
     <link rel="stylesheet" href="css/RadioButtonStyle.css"/> <!-- Подключение CSS файла -->
     <script src="js/jquery-3.6.0.min.js" type="text/javascript"> </script>
-    <script src="js/requestHandler.js" type="text/javascript"> </script>
-    <script src="js/inputHandler.js" type="text/javascript"> </script>
-    <script src="js/eventHandler.js" type="text/javascript"> </script>
     <script src="js/imageClickHandler.js" type="text/javascript"> </script>
-    <script src="js/windowEventListener.js" type="text/javascript"> </script>
-    <script src="js/batman.js" type="text/javascript"> </script>
+    <script src="js/drawFigure.js" type="text/javascript"> </script>
+    <script src="js/eventListeners.js" type="text/javascript"> </script>
+
 </h:head>
 
 <h:body class="body">
@@ -116,7 +114,7 @@
                     <h:graphicImage value="figure/graphLines.png" alt="Interactive Image" id="interactive-image"/>
                 </div>
                 <div class="graphicPlotContainer" style="--scale: 1;" id="graphicPlot">
-                    <canvas class="canvas" id="batmanCanvas" style="/*noinspection CssUnresolvedCustomProperty*/transform: scale(var(--scale));" data-custom="2.5" width="500" height="400"/>
+                    <canvas class="canvas" id="figureCanvas" style="/*noinspection CssUnresolvedCustomProperty*/transform: scale(var(--scale));" data-custom="2.5" width="500" height="400"/>
                 </div>
             </div>
         </div>
