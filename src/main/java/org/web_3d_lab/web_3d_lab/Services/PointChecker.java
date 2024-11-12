@@ -11,9 +11,9 @@ public class PointChecker {
     }
 
     private boolean checkPoint(float x, float y, float r){
-        boolean firstPart = (y<x*2+r)&&(x<0)&&(y>0);
-        boolean secondPart = (x*x+y*x<r*r/4)&&(x>0)&&(y>0);
-        boolean thirdPart = (x>-r)&&(x<0)&&(y<0)&&(y>-r);
+        boolean firstPart = (y<=x*2+r)&&(x<=0)&&(y>=0);
+        boolean secondPart = (x*x+y*x<=r*r/4)&&(x>=0)&&(y>=0);
+        boolean thirdPart = (x>=-r)&&(x<=0)&&(y<=0)&&(y>=-r);
         return firstPart || secondPart || thirdPart;
     }
 }

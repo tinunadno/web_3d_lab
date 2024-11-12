@@ -50,12 +50,11 @@ public class Result {
 
     @Override
     public String toString(){
-        return "Result(" +
-                "id: "+id+
-                "\nxValue: "+xValue+
-                "\nyValue: "+yValue+
-                "\nrValue: "+rValue+
-                "\nexecutionTime: "+executionTime+
-                "\nrequestTime: "+requestTime+")";
+        if(result){
+            return "point belongs to function";
+        }
+        else{
+            return "point doesnt belongs to function";
+        }
     }
 }

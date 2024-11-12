@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://java.sun.com/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>yura's 3d lab</title>
     <link rel="stylesheet" href="css/baseStyle.css"/> <!-- Подключение CSS файла -->
@@ -30,6 +30,9 @@
     <header class="header">Перминов Юра Константинович P3231 Вариант №223317</header>
     <div class="middle">
         <div class="userInterfacePanel">
+            <h:form>
+                <h:commandButton class ="returnButton" value="go back" action="index"/>
+            </h:form>
             <div class="left">
                 <h:form id="userInputForm">
                     <div class="userInput">
@@ -64,7 +67,7 @@
                                     <f:selectItem itemValue="3" itemLabel="3"/>
                                 </h:selectOneRadio>
                             </div>
-                            <h:commandButton value="get server response" styleClass="grid-item button"
+                            <h:commandButton value="get result" styleClass="grid-item button"
                                              action="#{mainBean.processRequest}" id="responseButton"/>
                             <div class="grid-item result-text-positive" id="result">
                                 <h:outputText value="#{mainBean.result}"/>
@@ -96,7 +99,7 @@
                                 <td class="th"><h:outputText value="#{entry.rValue}"/></td>
                                 <td class="th"><h:outputText value="#{entry.requestTime}"/></td>
                                 <td class="th"><h:outputText value="#{entry.executionTime}"/></td>
-                                <td class="th"><h:outputText value="#{entry.result}"/></td>
+                                <td class="th #{entry.result ? 'col_1' : 'col_0'}"><h:outputText value="#{entry.result}"/></td>
                             </tr>
                         </ui:repeat>
                         </tbody>
@@ -107,7 +110,9 @@
             <div class="graphicSpot">
                 <div class="pointsLayout">
                     <ui:repeat value="#{mainBean.history}" var="entry" >
-                        <div class = "point" style = "--x: #{entry.xValue}; --y: #{entry.yValue};"></div>
+                        <div class="point #{entry.result ? 'point_pos' : 'point_neg'}"
+                             style="--x: #{entry.xValue}; --y: #{entry.yValue};">
+                        </div>
                     </ui:repeat>
                 </div>
                 <div class="graphic">

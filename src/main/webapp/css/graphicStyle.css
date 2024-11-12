@@ -19,34 +19,24 @@
   pointer-events: none; /* Allow clicks to pass through */
   z-index: 2; /* Ensure this image is below the second image */
 }
+
 .point {
   position: absolute;
   width: 8px; /* Adjust size as needed */
   height: 8px; /* Adjust size as needed */
-  background-color: lightcoral;
   border-radius: 50%; /* Make the point circular */
-  border: 2px solid red; /* Border style */
   pointer-events: none; /* Allow clicks to pass through */
-}
-
-/* Positioning points based on data attributes */
-.point {
   top: calc(((var(--y) * -1 + 5) * 56 + 15) * 1px);
   left: calc(((var(--x) + 5) * 56 + 15) * 1px);
 }
 
-.point_pos {
-  position: absolute;
-  width: 8px; /* Adjust size as needed */
-  height: 8px; /* Adjust size as needed */
-  background-color: lightgreen;
-  border-radius: 50%; /* Make the point circular */
-  border: 2px solid green; /* Border style */
-  pointer-events: none; /* Allow clicks to pass through */
+/* Base colors */
+.point_neg {
+  background-color: lightcoral;
+  border: 2px solid red;
 }
 
-/* Positioning points based on data attributes */
 .point_pos {
-  top: calc(((var(--y)*(-1)+5)*56+15) * 1px);
-  left: calc(((var(--x)+5)*56+15) * 1px);
+  background-color: lightgreen;
+  border: 2px solid green;
 }

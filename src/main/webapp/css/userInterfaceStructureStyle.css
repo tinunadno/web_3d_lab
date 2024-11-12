@@ -37,3 +37,29 @@
   overflow-y: auto;
   overflow-x: auto;
 }
+
+.returnButton {
+  display: flex;
+  height: 100%; /* Заполняет всю высоту экрана */
+  margin: 0;
+  width: 100%; /* Занимает 80% ширины контейнера */
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
+  background: #FFFFFF;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid darkgray;
+  text-align: center;
+  text-decoration: none;
+}
+.returnButton:hover {
+  background-color: #6a93FF;
+  transform: translateY(-2px);
+}
+
+.returnButton:active {
+  background-color: #6a93d1;
+  transform: translateY(0);
+}
