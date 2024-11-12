@@ -6,10 +6,10 @@ public class Result {
     private float yValue;
     private float rValue;
     private boolean result;
-    private String executionTime;
-    private long requestTime;
+    private String requestTime;
+    private double executionTime;
 
-    public Result(int id, float xValue, float yValue, float rValue, boolean result, String executionTime, long requestTime) {
+    public Result(int id, float xValue, float yValue, float rValue, boolean result, String requestTime, double executionTime) {
         this.id = id;
         this.xValue = xValue;
         this.yValue = yValue;
@@ -40,11 +40,11 @@ public class Result {
         return result;
     }
 
-    public String getExecutionTime(){
+    public double getExecutionTime(){
         return executionTime;
     }
 
-    public long getRequestTime(){
+    public String getRequestTime(){
         return requestTime;
     }
 

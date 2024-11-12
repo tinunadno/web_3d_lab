@@ -4,10 +4,13 @@ import org.web_3d_lab.web_3d_lab.stored_objects.Result;
 
 public class PointChecker {
     private int counter = 0;
-    private DateFormer dateFormer= new DateFormer();
+    private final DateFormer dateFormer= new DateFormer();
 
     public Result processPoint(float xValue, float yValue, float rValue){
-        return new Result(counter++, xValue, yValue ,rValue, checkPoint(xValue, yValue, rValue), dateFormer.getCurrentDate(), System.nanoTime());
+        long start_time = System.nanoTime();
+        boolean result = checkPoint(xValue, yValue, rValue);
+        long execution_time = System.nanoTime() - start_time;
+        return new Result(counter++, xValue, yValue ,rValue, result, dateFormer.getCurrentDate(), execution_time/100000000.0);
     }
 
     private boolean checkPoint(float x, float y, float r){

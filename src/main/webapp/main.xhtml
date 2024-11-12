@@ -69,7 +69,7 @@
                             </div>
                             <h:commandButton value="get result" styleClass="grid-item button"
                                              action="#{mainBean.processRequest}" id="responseButton"/>
-                            <div class="grid-item result-text-positive" id="result">
+                            <div class="grid-item #{mainBean.result.result ? 'result_text_positive' : 'result_text_negative'}" id="result">
                                 <h:outputText value="#{mainBean.result}"/>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             <th class="tableHeader">Y</th>
                             <th class="tableHeader">R</th>
                             <th class="tableHeader">request time</th>
-                            <th class="tableHeader">server start</th>
+                            <th class="tableHeader">execution time</th>
                             <th class="tableHeader">response</th>
                         </tr>
                         </thead>
