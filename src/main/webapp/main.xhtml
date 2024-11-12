@@ -107,9 +107,11 @@
             </div>
 
             <div class="graphicSpot">
-                <ui:repeat value="#{mainBean.history}" var="entry">
-                    <div class = "point" style = "--x: #{entry.xValue}; --y: #{entry.yValue};"></div>
-                </ui:repeat>
+                <div class="pointsLayout">
+                    <ui:repeat value="#{mainBean.history}" var="entry" >
+                        <div class = "point" style = "--x: #{entry.xValue}; --y: #{entry.yValue};"></div>
+                    </ui:repeat>
+                </div>
                 <div class="graphic">
                     <h:graphicImage value="figure/graphLines.png" alt="Interactive Image" id="interactive-image"/>
                 </div>
