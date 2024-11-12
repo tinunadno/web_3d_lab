@@ -1,38 +1,50 @@
-// Function to draw the figure based on a given radius
-function drawFigure(radius) {
-    const canvas = document.getElementById("figureCanvas");
-    const ctx = canvas.getContext("2d");
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+function drawFigure(r) {
+    // Get the canvas element and its context
+    const canvas = document.getElementById('figureCanvas');
+    const ctx = canvas.getContext('2d');
 
-    // Clear the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Set canvas dimensions (assumes canvas is already sized to fit parent container)
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
 
-    // Set the maximum radius for the figure
-    const maxRadius = Math.min(centerX, centerY);
+    // Clear the canvas for redrawing
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-    // Ensure radius is within the allowed range (1 - 5)
-    radius = Math.max(1, Math.min(radius, 5)) * maxRadius;
+    // Calculate the center of the canvas
+    const centerX = canvasWidth / 2;
+    const centerY = canvasHeight / 2;
 
-    // Draw the square in the bottom-left corner
-    ctx.fillStyle = "lightblue";
+    // Calculate the scaled size for the square
+    const maxSquareSize = canvasWidth / 2; // Maximum size when r = 5
+    const squareSize = (r / 5) * maxSquareSize; // Scale r relative to max size
+
+    // Draw the square in the third quadrant (bottom-left from center)
+    const squareX = centerX - squareSize;
+    const squareY = centerY;
+    ctx.fillStyle = '#6a93d1'; // Set the fill color for the square
+    ctx.fillRect(squareX, squareY, squareSize, squareSize); // Draw rightwards and upwards
+
+    // Calculate triangle vertices based on r
+    const triangleHeight = (r / 5) * maxSquareSize; // Scaling height for triangle
+    const triangleBase = triangleHeight / 2; // Triangle base is half of its height
+
+    // Draw the triangle in the second quadrant (top-left from center)
     ctx.beginPath();
-    ctx.rect(centerX - radius, centerY - radius, radius, radius);
-    ctx.fill();
-
-    // Draw the triangle in the top-left corner
-    ctx.fillStyle = "lightgreen";
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(centerX - 0.5 * radius, centerY);
-    ctx.lineTo(centerX, centerY - radius);
+    ctx.moveTo(centerX, centerY); // (0, 0) in the center
+    ctx.lineTo(centerX - triangleBase, centerY); // (-r/2, 0) relative to center
+    ctx.lineTo(centerX, centerY - triangleHeight); // (0, r) relative to center
     ctx.closePath();
-    ctx.fill();
+    ctx.fillStyle = '#6a93d1'; // Set the fill color for the triangle
+    ctx.fill(); // Draw the triangle
 
-    // Draw the quarter circle in the top-right corner
-    ctx.fillStyle = "lightcoral";
+    // Calculate radius for the quarter-circle
+    const circleRadius = (r / 10) * canvasWidth; // Scaling circle radius to fit r/2
+
+    // Draw the quarter-circle in the first quadrant (top-right from center)
     ctx.beginPath();
-    ctx.arc(centerX, centerY, 0.5 * radius, Math.PI, Math.PI * 1.5);
+    ctx.arc(centerX, centerY, circleRadius/2, 1.5 * Math.PI, 0, false); // Top-right quarter-circle
+    ctx.lineTo(centerX, centerY); // Connect back to the center
     ctx.closePath();
-    ctx.fill();
+    ctx.fillStyle = '#6a93d1'; // Set the fill color for the quarter-circle
+    ctx.fill(); // Draw the quarter-circle
 }
