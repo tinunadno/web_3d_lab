@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://java.sun.com/jsf/core">
 <h:head>
-    <title>gay</title>
+    <title>yura's 3d lab</title>
     <link rel="stylesheet" href="css/baseStyle.css"/> <!-- Подключение CSS файла -->
     <link rel="stylesheet" href="./css/headerStyle.css"/> <!-- Подключение CSS файла -->
     <link rel="stylesheet" href="./css/footerStyle.css"/> <!-- Подключение CSS файла -->
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/tableStyle.css"/> <!-- Подключение CSS файла -->
     <link rel="stylesheet" href="css/buttonStyle.css"/> <!-- Подключение CSS файла -->
     <link rel="stylesheet" href="css/RadioButtonStyle.css"/> <!-- Подключение CSS файла -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"> </script>
+    <script src="js/jquery-3.6.0.min.js" type="text/javascript"> </script>
     <script src="js/requestHandler.js" type="text/javascript"> </script>
     <script src="js/inputHandler.js" type="text/javascript"> </script>
     <script src="js/eventHandler.js" type="text/javascript"> </script>
@@ -48,6 +48,8 @@
                                     <f:selectItem itemValue="1" itemLabel="1"/>
                                     <f:selectItem itemValue="2" itemLabel="2"/>
                                     <f:selectItem itemValue="3" itemLabel="3"/>
+                                    <f:selectItem itemValue="4" itemLabel="4"/>
+                                    <f:selectItem itemValue="5" itemLabel="5"/>
                                 </h:selectOneMenu>
                             </div>
                             <div class="grid-item">Y:</div>
@@ -90,13 +92,13 @@
                         <!-- Здесь можно вывести историю запросов через цикл -->
                         <ui:repeat value="#{mainBean.history}" var="entry">
                             <tr>
-                                <td><h:outputText value="#{entry.number}"/></td>
-                                <td><h:outputText value="#{entry.x}"/></td>
-                                <td><h:outputText value="#{entry.y}"/></td>
-                                <td><h:outputText value="#{entry.radius}"/></td>
-                                <td><h:outputText value="#{entry.requestTime}"/></td>
-                                <td><h:outputText value="#{entry.serverStart}"/></td>
-                                <td><h:outputText value="#{entry.response}"/></td>
+                                <td class="tableHeader"><h:outputText value="#{entry.id}"/></td>
+                                <td class="th"><h:outputText value="#{entry.xValue}"/></td>
+                                <td class="th"><h:outputText value="#{entry.yValue}"/></td>
+                                <td class="th"><h:outputText value="#{entry.rValue}"/></td>
+                                <td class="th"><h:outputText value="#{entry.requestTime}"/></td>
+                                <td class="th"><h:outputText value="#{entry.executionTime}"/></td>
+                                <td class="th"><h:outputText value="#{entry.result}"/></td>
                             </tr>
                         </ui:repeat>
                         </tbody>
@@ -104,17 +106,17 @@
                 </div>
             </div>
 
-<!--            <div class="graphicSpot">-->
-<!--                <div id="points" class="pointsLayout">-->
-<!--                    &lt;!&ndash; JSF-управляемые точки &ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="graphic">-->
-<!--                    <h:graphicImage name="figure/graphLines.png" library="images" alt="Interactive Image" id="interactive-image"/>-->
-<!--                </div>-->
-<!--                <div class="graphicPlotContainer" style="&#45;&#45;scale: 1;" id="graphicPlot">-->
-<!--                    <canvas class="canvas" id="batmanCanvas" style="transform: scale(var(&#45;&#45;scale));"  data-custom="2.5" width="500" height="400"></canvas>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="graphicSpot">
+                <ui:repeat value="#{mainBean.history}" var="entry">
+                    <div class = "point" style = "--x: #{entry.xValue}; --y: #{entry.yValue};"></div>
+                </ui:repeat>
+                <div class="graphic">
+                    <h:graphicImage value="figure/graphLines.png" alt="Interactive Image" id="interactive-image"/>
+                </div>
+                <div class="graphicPlotContainer" style="--scale: 1;" id="graphicPlot">
+                    <canvas class="canvas" id="batmanCanvas" style="/*noinspection CssUnresolvedCustomProperty*/transform: scale(var(--scale));" data-custom="2.5" width="500" height="400"/>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="footer">v 2.5</footer>

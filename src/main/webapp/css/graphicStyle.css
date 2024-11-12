@@ -31,8 +31,8 @@
 
 /* Positioning points based on data attributes */
 .point {
-  top: calc(var(--y) * 1px);
-  left: calc(var(--x) * 1px);
+  top: calc(((var(--y) * -1 + 5) * 56 + 15) * 1px);
+  left: calc(((var(--x) + 5) * 56 + 15) * 1px);
 }
 
 .point_pos {
@@ -47,6 +47,6 @@
 
 /* Positioning points based on data attributes */
 .point_pos {
-  top: calc(var(--y) * 1px);
-  left: calc(var(--x) * 1px);
+  top: calc(((var(--y)*(-1)+5)*56+15) * 1px);
+  left: calc(((var(--x)+5)*56+15) * 1px);
 }

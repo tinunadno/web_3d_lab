@@ -2,6 +2,8 @@ package org.web_3d_lab.web_3d_lab;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import org.web_3d_lab.web_3d_lab.stored_objects.Result;
+import org.web_3d_lab.web_3d_lab.utils.PointChecker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,8 +15,9 @@ public class MainBean implements Serializable {
     private float xValue;
     private float yValue;
     private float radius = 2.5f; // значение по умолчанию
-    private String result;
-    private List<String> history = new ArrayList<>();
+    private Result result;
+    private List<Result> history = new ArrayList<>();
+    private PointChecker pointChecker = new PointChecker();
 
     // Геттеры и сеттеры для полей xValue, yValue, radius, result и history
     public float getxValue() {
@@ -41,28 +44,28 @@ public class MainBean implements Serializable {
         this.radius = radius;
     }
 
-    public String getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
-    public List<String> getHistory() {
+    public List<Result> getHistory() {
         return history;
     }
 
     // Метод обработки запроса, привязанный к кнопке в форме
     public String processRequest() {
         try {
-            result = "Выполнено! X: " + xValue + ", Y: " + yValue + ", R: " + radius;
+            result = pointChecker.processPoint(xValue, yValue, radius);
 
             // Создание новой записи для истории
             history.add(result); // добавление записи в историю
 
         } catch (NumberFormatException e) {
-            result = "Ошибка: Y должно быть числом!";
+            result = null;
         }
         return null; // остаемся на той же странице после обработки
     }
