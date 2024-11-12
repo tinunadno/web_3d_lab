@@ -11,6 +11,9 @@ target/
 *.iws
 *.iml
 *.ipr
+hibernate.cfg.xml
+*.sh
+*.log
 
 ### Eclipse ###
 .apt_generated
