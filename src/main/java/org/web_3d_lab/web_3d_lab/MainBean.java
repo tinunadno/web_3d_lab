@@ -2,6 +2,7 @@ package org.web_3d_lab.web_3d_lab;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import org.web_3d_lab.web_3d_lab.resultDAO.DAOService;
 import org.web_3d_lab.web_3d_lab.resultDAO.ResultDAO;
 import org.web_3d_lab.web_3d_lab.stored_objects.Result;
 import org.web_3d_lab.web_3d_lab.Services.PointChecker;
@@ -19,7 +20,7 @@ public class MainBean implements Serializable {
     private Result result;
     private PointChecker pointChecker = new PointChecker();
 
-    private ResultDAO resultDAO = new ResultDAO();
+    private DAOService daoService = new DAOService();
 
     // Геттеры и сеттеры для полей xValue, yValue, radius, result и history
     public float getxValue() {
@@ -60,7 +61,7 @@ public class MainBean implements Serializable {
             result = pointChecker.processPoint(xValue, yValue, radius);
 
             // Создание новой записи для истории
-            resultDAO.saveResult(result);
+            daoService.saveResult(result);
 
         } catch (NumberFormatException e) {
             result = null;
@@ -69,6 +70,6 @@ public class MainBean implements Serializable {
     }
 
     public List<Result> getResultHistory() {
-        return resultDAO.getAllResults();
+        return daoService.getAllResults();
     }
 }
