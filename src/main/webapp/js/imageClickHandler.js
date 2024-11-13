@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const y = (event.clientY - rect.top - 95);   // Y position in pixels
 
         // Calculate values to insert
-        const xValue = Math.max(Math.min(Math.round((x * 10) / 560 - 5), 5), -5).toString();
+        const xValue = Math.max(Math.min(((x * 10) / 560 - 5), 5), -5).toString();
         const yValue = ((y * 10 / 560 - 5) * -1).toString();
 
         // Insert values into the select and text fields
-        $('#userInputForm\\:user-input-selectBox').val(xValue);
+        $('#userInputForm\\:user-input-xField').val(xValue);
         $('#userInputForm\\:user-input-textField').val(yValue);
 
         document.getElementById('userInputForm:responseButton').click();
