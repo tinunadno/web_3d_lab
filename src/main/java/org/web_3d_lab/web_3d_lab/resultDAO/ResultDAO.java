@@ -17,7 +17,7 @@ public class ResultDAO {
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

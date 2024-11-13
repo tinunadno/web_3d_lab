@@ -3,12 +3,10 @@ package org.web_3d_lab.web_3d_lab;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import org.web_3d_lab.web_3d_lab.resultDAO.DAOService;
-import org.web_3d_lab.web_3d_lab.resultDAO.ResultDAO;
 import org.web_3d_lab.web_3d_lab.stored_objects.Result;
 import org.web_3d_lab.web_3d_lab.Services.PointChecker;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named("mainBean")
@@ -18,9 +16,9 @@ public class MainBean implements Serializable {
     private float yValue;
     private float radius = 2.5f; // значение по умолчанию
     private Result result;
-    private PointChecker pointChecker = new PointChecker();
+    private final PointChecker pointChecker = new PointChecker();
 
-    private DAOService daoService = new DAOService();
+    private final DAOService daoService = new DAOService();
 
     // Геттеры и сеттеры для полей xValue, yValue, radius, result и history
     public float getxValue() {
