@@ -15,3 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     drawFigure(selectedRadioValue);
 });
+
+function validateYField() {
+    var yField = document.getElementById('userInputForm:user-input-textField');
+    var yValue = yField.value;
+    var resultDiv = document.getElementById('userInputForm:outputText');
+    console.log("ama here");
+    // Проверка на числовое значение
+    if (isNaN(yValue) || yValue.trim() === "") {
+        console.log("ama here1");
+        resultDiv.innerHTML = "Введите корректное число в поле Y.";
+        return false; // отменяет отправку формы
+    }
+
+    return true;
+}

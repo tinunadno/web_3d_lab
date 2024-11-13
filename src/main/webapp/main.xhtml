@@ -34,7 +34,7 @@
                 <h:commandButton class ="returnButton" value="go back" action="index"/>
             </h:form>
             <div class="left">
-                <h:form id="userInputForm">
+                <h:form id="userInputForm" onsubmit="return validateYField();">
                     <div class="userInput">
                         <div class="grid-container">
                             <div class="grid-item">X:</div>
@@ -70,7 +70,7 @@
                             <h:commandButton value="get result" styleClass="grid-item button"
                                              action="#{mainBean.processRequest}" id="responseButton"/>
                             <div class="grid-item #{mainBean.result.result ? 'result_text_positive' : 'result_text_negative'}" id="result">
-                                <h:outputText value="#{mainBean.result}"/>
+                                <h:outputText id="outputText" value="#{mainBean.result}"/>
                             </div>
                         </div>
                     </div>
